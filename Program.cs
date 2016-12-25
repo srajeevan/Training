@@ -1,33 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day3_Overriding
+namespace Day3_HashTableandArrayList
 {
-    class A
-    {
-        public virtual void Show()
-        {
-            Console.WriteLine("Display method of Class A");
-        }
-    }
-    class B:A
-    {
-         public override void Show()
-        {
-            Console.WriteLine("Display method of Class B");
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            A obj1 = new A();
-            obj1.Show();
-            A obj2 = new B();
-            obj2.Show();
+            Hashtable ht = new Hashtable();
+            ht.Add(1, "one");
+            ht.Add(2, "Two");
+            ht.Add(3, "Three");
+            ht.Add(4, "Four");
+            ht.Add(5, "Five");
+            foreach(DictionaryEntry x in ht)
+            {
+                Console.WriteLine("key{0} and value:{1}",x.Key,x.Value);
+            }
+            ArrayList at = new ArrayList();
+            Console.WriteLine("array list values");
+            at.Add(0);
+            at.Add(1);
+            at.Add(2);
+            at.Add(3);
+            at.Add(4);
+            foreach(int i in at)
+            {
+                Console.WriteLine(i);
+            }
+
+
         }
     }
 }
