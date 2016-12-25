@@ -4,32 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day3_Overloading
+namespace Day3_Overriding
 {
-    class RectArea
+    class A
     {
-        public void Area(int l, int b)
+        public virtual void Show()
         {
-            int Area = l * b;
-            Console.WriteLine("Area of Rectangle is: " + Area);
+            Console.WriteLine("Display method of Class A");
         }
     }
-    class CircleArea:RectArea
+    class B:A
     {
-        public void Area(int r)
+         public override void Show()
         {
-            double Area = 3.14 * r * r;
-            Console.WriteLine("Area of Circle is: " + Area);
+            Console.WriteLine("Display method of Class B");
         }
     }
-    class program
-    {    
+    class Program
+    {
         static void Main(string[] args)
         {
-            RectArea a1 = new RectArea();
-            CircleArea a2 = new CircleArea();
-            a1.Area(10, 5);
-            a2.Area(5);
+            A obj1 = new A();
+            obj1.Show();
+            A obj2 = new B();
+            obj2.Show();
         }
     }
 }
