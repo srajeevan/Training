@@ -1,38 +1,49 @@
-﻿//Demo of Array,ArrayList,Foreach and While
-//Arrays are of fixed length
-//ArrayList is flexible array with list of objects
-using System;
-using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day3_Arrayist
+namespace Day3_AccessModifier
 {
+    class Demo
+    {
+        public void ShowName()//public
+        {
+            Console.WriteLine("Hi Sreejith");
+        }
+        private string city;
+        protected internal string country;//protected internal
+        protected int age;//protected
+        internal void ShowDate()//internal
+        {
+            Console.WriteLine(DateTime.Today.Date);
+        }
+        public void showDetails()
+        {
+            Console.WriteLine("Country:" + country);
+            
+        }
+    }
+    class NewDemo: Demo
+    {
+        NewDemo()
+        {
+            this.age = 27;//accessible
+            Console.WriteLine("Age is:" + age);
+        }
+        
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            ArrayList arr = new ArrayList();//Array,Array List,Foreach and While
-            arr.Add(0);
-            arr.Add(1);
-            arr.Add(2);
-            arr.Add(3);
-            Console.WriteLine("Using Foreach loop");
-            foreach (int li in arr)
-            {
-                Console.WriteLine(li);
-            }
-            int i = 0;
-            Console.WriteLine(arr.Count);
-            Console.WriteLine("Using While Looop");
-            while (i < arr.Count)
-            {
-
-                Console.WriteLine(i);
-                i++;
-            }
+            Demo obj = new Demo();
+            obj.ShowName();
+            obj.ShowDate();
+            //obj.City = "Irving"; //not accessible due to private protection level
+            obj.country = "USA";//accessible
+            obj.showDetails();
         }
     }
 }
-
