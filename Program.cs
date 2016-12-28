@@ -4,32 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day4
+namespace Day4_Delegates
 {
-    abstract class Repository
+    delegate void showDetails(string mesaage);
+    class Student
     {
-        public abstract void Show();
-        public void showMessage()
+        public void GetMessage1(string m)
         {
-            Console.WriteLine("Hi Sreejith-Message from non abstract method");
+            Console.WriteLine(m);
         }
-               
+        public void GetMessage2(string msg)
+        {
+            Console.WriteLine(msg);
+        }
     }
-    class Program:Repository
+    class Program
     {
-        public override void Show()
-        {
-            Console.WriteLine("Abstract method");
-        }
+
         static void Main(string[] args)
         {
-            Program pg = new Program();
-            pg.Show();
-            Repository rp = new Program();
-            rp.Show();
-            pg.showMessage();
-
+            Student st = new Student();
+            showDetails sd = new showDetails(st.GetMessage1);
+            showDetails sd1 = new showDetails(st.GetMessage1);
+            sd1 += st.GetMessage2;
+            sd("Hello World-from delegate");//delgate
+            sd1("multicast delegate");//multicast delegate
         }
     }
 }
- 
