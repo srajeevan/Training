@@ -4,31 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day4_Delegates
+namespace Day4_Interface
 {
-    delegate void showDetails(string mesaage);
-    class Student
+    interface Iprint
     {
-        public void GetMessage1(string m)
-        {
-            Console.WriteLine(m);
-        }
-        public void GetMessage2(string msg)
-        {
-            Console.WriteLine(msg);
-        }
+        void print();
     }
-    class Program
+    interface Ifax
     {
-
+        void fax();
+    }
+    class Program : Iprint,Ifax
+    {
+        public void print()
+        {
+            Console.WriteLine("Printing started");
+        }
+        public void fax()
+        {
+            Console.WriteLine("Faxing started");
+        }
         static void Main(string[] args)
         {
-            Student st = new Student();
-            showDetails sd = new showDetails(st.GetMessage1);
-            showDetails sd1 = new showDetails(st.GetMessage1);
-            sd1 += st.GetMessage2;
-            sd("Hello World-from delegate");//delgate
-            sd1("multicast delegate");//multicast delegate
+            Iprint ip = new Program();
+            ip.print();
+            Ifax ifx = new Program();
+            ifx.fax();
+            Program pg = new Program();
+            pg.print();
+            pg.fax();
         }
     }
 }
