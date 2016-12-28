@@ -4,46 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day3_AccessModifier
+namespace Day4
 {
-    class Demo
+    abstract class Repository
     {
-        public void ShowName()//public
+        public abstract void Show();
+        public void showMessage()
         {
-            Console.WriteLine("Hi Sreejith");
+            Console.WriteLine("Hi Sreejith-Message from non abstract method");
         }
-        private string city;
-        protected internal string country;//protected internal
-        protected int age;//protected
-        internal void ShowDate()//internal
-        {
-            Console.WriteLine(DateTime.Today.Date);
-        }
-        public void showDetails()
-        {
-            Console.WriteLine("Country:" + country);
-            
-        }
+               
     }
-    class NewDemo: Demo
+    class Program:Repository
     {
-        NewDemo()
+        public override void Show()
         {
-            this.age = 27;//accessible
-            Console.WriteLine("Age is:" + age);
+            Console.WriteLine("Abstract method");
         }
-        
-    }
-    class Program
-    {
         static void Main(string[] args)
         {
-            Demo obj = new Demo();
-            obj.ShowName();
-            obj.ShowDate();
-            //obj.City = "Irving"; //not accessible due to private protection level
-            obj.country = "USA";//accessible
-            obj.showDetails();
+            Program pg = new Program();
+            pg.Show();
+            Repository rp = new Program();
+            rp.Show();
+            pg.showMessage();
+
         }
     }
 }
+ 
