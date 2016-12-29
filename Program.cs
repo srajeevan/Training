@@ -4,31 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day5
+namespace Day5_anonymous
 {
-    class Demo
-    {
-        public static string x = "Static variable";
-        public static void show()
-        {
-            Console.WriteLine("Static method");
-        }
-        public void NullDemo()
-        {
-            //Console.WriteLine("Please enter your age");
-            int? age = null;
-            Console.WriteLine("Age is:"+age);
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            Demo.show();
-            Console.WriteLine(Demo.x);
-            Console.WriteLine("Nullable type & Var example");
-            Demo obj = new Demo();
-            obj.NullDemo();
+            var student = new//var implicit typed variable
+            {
+                sid = 001,
+                sname = "John",
+                sage = 20
+
+            };
+            Console.WriteLine("Demo of Var and Anonymous type");
+            Console.WriteLine("Stduent Details: Student Id={0},Stduent Name:{1},Student Age:{2}",student.sid, student.sname, student.sage);
         }
     }
 }
