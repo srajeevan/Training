@@ -4,35 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day4_Interface
+namespace Day5
 {
-    interface Iprint
+    class Demo
     {
-        void print();
-    }
-    interface Ifax
-    {
-        void fax();
-    }
-    class Program : Iprint,Ifax
-    {
-        public void print()
+        public static string x = "Static variable";
+        public static void show()
         {
-            Console.WriteLine("Printing started");
+            Console.WriteLine("Static method");
         }
-        public void fax()
+        public void NullDemo()
         {
-            Console.WriteLine("Faxing started");
+            //Console.WriteLine("Please enter your age");
+            int? age = null;
+            Console.WriteLine("Age is:"+age);
         }
+    }
+    class Program
+    {
         static void Main(string[] args)
         {
-            Iprint ip = new Program();
-            ip.print();
-            Ifax ifx = new Program();
-            ifx.fax();
-            Program pg = new Program();
-            pg.print();
-            pg.fax();
+            Demo.show();
+            Console.WriteLine(Demo.x);
+            Console.WriteLine("Nullable type & Var example");
+            Demo obj = new Demo();
+            obj.NullDemo();
         }
     }
 }
