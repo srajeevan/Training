@@ -4,21 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day5_anonymous
+namespace Day6
 {
-    class Program
+    
+
+    class Program:IDisposable
     {
+        int x;
+        int y;
+        bool disposed = false;
+        public Program()
+        {
+            this.x = 0;
+            this.y = 0;
+        }
+        public Program(int a,int b)//constructor
+        {
+            this.x = a;
+            this.y = b;
+        }
+        public void Dispose()//Dispose
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);//finalize
+        }
+        protected void Dispose(bool disposing)
+        {
+            if(!disposed)
+            {
+                if(disposing)
+                {
+                    Console.WriteLine("clean up managed code");
+                }
+                Console.WriteLine("clean up unmanaged code");
+                disposed = true;
+            }
+
+        }
         static void Main(string[] args)
         {
-            var student = new//var implicit typed variable
-            {
-                sid = 001,
-                sname = "John",
-                sage = 20
-
-            };
-            Console.WriteLine("Demo of Var and Anonymous type");
-            Console.WriteLine("Stduent Details: Student Id={0},Stduent Name:{1},Student Age:{2}",student.sid, student.sname, student.sage);
+            Program pg = new Program(2,3);
+            pg.Dispose();
         }
-    }
+    }   
 }
